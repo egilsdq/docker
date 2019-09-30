@@ -144,3 +144,8 @@ services:
       - RP_PROFILES=docker
     #     - RP_MONGO_URI=mongodb://localhost:27017
     restart: always
+secrets:
+  app.example.org.cert:
+    file: ./app.example.org.cert
+  app.example.org.key:
+    file: ./app.example.org.key
