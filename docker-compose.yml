@@ -69,6 +69,7 @@ services:
       - "443:443"
       # - "8081:8081" # HTTP Administration exposed
     command:
+      - --tls-cert=cert.pem --tls-key=key.pem
       - --consulcatalog.endpoint=registry:8500
       - --defaultEntryPoints=http,https
       - --entryPoints=Name:http Address::80
