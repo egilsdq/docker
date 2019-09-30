@@ -62,10 +62,8 @@ services:
   #    restart: always
 
 
-
   gateway:
     image: traefik:1.6.6
-    command: --docker
     ports:
       - "80:80"
       - "443:443"
@@ -74,7 +72,7 @@ services:
       - --consulcatalog.endpoint=registry:8500
       - --defaultEntryPoints=http,https
       - --entryPoints=Name:http Address::80
-      - --entryPoints=Name:https Address::443 TLS
+      - --entryPoints=Name:https Address::443
       - --web
       - --web.address=:8081
     restart: always
@@ -82,7 +80,7 @@ services:
   index:
     image: reportportal/service-index:4.2.0
     environment:
-      - RP_SERVER_PORT=80
+      - RP_SERVER_PORT=443
       - RP_PROXY_CONSUL=true
     depends_on:
       - registry
@@ -102,7 +100,7 @@ services:
   ui:
     image: reportportal/service-ui:4.3.0
     environment:
-      - RP_SERVER.PORT=80
+      - RP_SERVER.PORT=443
       - RP_CONSUL.TAGS=urlprefix-/ui opts strip=/ui
       - RP_CONSUL.ADDRESS=registry:8500
     restart: always
