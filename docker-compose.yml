@@ -78,9 +78,8 @@ services:
       - --web.address=:8081
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
-      - ../../certs/server.crt:/sslcerts/server.crt
-      - ../../certs/server.key:/sslcerts/server.key
-      - ./traefik.toml:/traefik.toml
+      - ./server.crt:/sslcerts/server.crt
+      - ./server.key:/sslcerts/server.key
     labels:
       - 'traefik.enable=false'
     restart: always
