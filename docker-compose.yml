@@ -70,9 +70,8 @@ services:
       # - "8081:8081" # HTTP Administration exposed
     command:
       - --consulcatalog.endpoint=registry:8500
-      - --defaultEntryPoints=http,https
+      - --defaultEntryPoints=http
       - --entryPoints=Name:http Address::8080
-      - --entrypoints=Name:https Address::443 TLS
       - --web
       - --web.address=:8081
     restart: always
