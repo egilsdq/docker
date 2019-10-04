@@ -1,7 +1,4 @@
-## You can generate a custom docker compose file automatically on http://reportportal.io/download (Step 2)
-
 ## This is example of Docker Compose for ReportPortal
-## Do not forget to configure data volumes for production usage
 
 ## Execute 'docker-compose -p reportportal up -d --force-recreate'
 ## to start all containers in daemon mode
