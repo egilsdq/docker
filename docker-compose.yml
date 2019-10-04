@@ -127,19 +127,4 @@ services:
         soft: 65536
         hard: 65536
   #    ports:
-  #        - "9200:9200"
-
-  jira:
-    image: reportportal/service-jira:4.3.0
-    environment:
-      - RP_PROFILES=docker
-    #     - RP_MONGO_URI=mongodb://localhost:27017
-    restart: always
-
-  rally:
-    image: reportportal/service-rally:4.3.0
-    environment:
-      - RP_PROFILES=docker
-    #     - RP_MONGO_URI=mongodb://localhost:27017
-    restart: always
-    
+  #        - "9200:9200"    
