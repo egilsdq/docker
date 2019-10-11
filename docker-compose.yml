@@ -10,7 +10,6 @@
 version: '2'
 
 services:
-
   mongodb:
     image: mongo:3.4
     #    ports:
@@ -18,6 +17,7 @@ services:
     volumes:
       - ./data/mongo:/data/db
     restart: always
+
 
   registry:
     image: consul:1.0.6
@@ -45,6 +45,7 @@ services:
     #      - RP_MONGO_URI=mongodb://localhost:27017
     restart: always
 
+
   ### Another option for gateway
   ### Can be used instead of traefik
   #  gateway:
@@ -57,7 +58,6 @@ services:
   #      - FABIO_REGISTRY_CONSUL_REGISTER_NAME=gateway
   #      - FABIO_PROXY_ADDR=:9999;rt=300s;wt=300s
   #    restart: always
-
 
 
   gateway:
@@ -73,6 +73,7 @@ services:
       - --web.address=:8081
     restart: always
 
+
   index:
     image: reportportal/service-index:4.2.0
     environment:
@@ -82,6 +83,7 @@ services:
       - registry
       - gateway
     restart: always
+
 
   api:
     image: reportportal/service-api:4.3.0
@@ -93,6 +95,7 @@ services:
     #      - RP_MONGO_URI=mongodb://localhost:27017
     restart: always
 
+
   ui:
     image: reportportal/service-ui:4.3.0
     environment:
@@ -101,6 +104,7 @@ services:
       - RP_CONSUL.ADDRESS=registry:8500
     restart: always
 
+
   analyzer:
     image: reportportal/service-analyzer:4.3.0
     depends_on:
@@ -108,6 +112,7 @@ services:
       - gateway
       - elasticsearch
     restart: always
+
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.1
