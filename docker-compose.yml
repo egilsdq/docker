@@ -61,7 +61,7 @@ services:
 
 
   gateway:
-    image: traefik:2.0
+    image: traefik:1.6.6
     ports:
       - "80:80" # HTTP exposed
     #      - "8081:8081" # HTTP Administration exposed
