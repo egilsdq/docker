@@ -7,7 +7,7 @@
 ##      '-d' -- enables daemon mode
 ##      '--force-recreate' -- forces re-recreating of all containers
 
-version: '3'
+version: '2'
 
 services:
   mongodb:
