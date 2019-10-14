@@ -97,7 +97,7 @@ services:
 
 
   ui:
-    image: reportportal/service-ui:4.3.0
+    image: reportportal/service-ui:4.3.7
     environment:
       - RP_SERVER.PORT=80
       - RP_CONSUL.TAGS=urlprefix-/ui opts strip=/ui
