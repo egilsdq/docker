@@ -11,7 +11,7 @@ version: '3'
 
 services:
   mongodb:
-    image: mongo:3.4
+    image: mongo:4.2
     #    ports:
     #        - "27017:27017"
     volumes:
@@ -20,7 +20,7 @@ services:
 
 
   registry:
-    image: consul:1.0.6
+    image: consul:1.6.1
     volumes:
       - ./data/consul:/consul/data
 #    ports:
@@ -61,7 +61,7 @@ services:
 
 
   gateway:
-    image: traefik:1.6.6
+    image: traefik:2.0
     ports:
       - "80:80" # HTTP exposed
     #      - "8081:8081" # HTTP Administration exposed
@@ -86,7 +86,7 @@ services:
 
 
   api:
-    image: reportportal/service-api:4.3.0
+    image: reportportal/service-api:4.3.7
     depends_on:
       - mongodb
     environment:
@@ -115,7 +115,7 @@ services:
 
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.1
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.4.2
     restart: always
     volumes:
       - ./data/elasticsearch:/usr/share/elasticsearch/data
