@@ -68,7 +68,7 @@ services:
     command:
       - --consulcatalog.endpoint=registry:8500
       - --defaultEntryPoints=http
-      - --entryPoints=Name:http Address::8080
+      - --entryPoints=Name:http Address::80
       - --web
       - --web.address=:8081
     restart: always
