@@ -1,0 +1,11 @@
+# Stop all containers
+sudo docker stop `sudo docker ps -qa`
+
+# Remove all containers and its volumes
+sudo docker rm -v `sudo docker ps -qa`
+
+# Remove all images
+sudo docker rmi -f `sudo docker images -qa`
+
+# Remove all local volumes not used by at least one container
+sudo docker volume prune
