@@ -1,0 +1,5 @@
+# Delete folder with subfolder
+sudo rm -r <folder>
+
+# Download and save file
+sudo curl <url_link> -o <file_name_with_ext>
