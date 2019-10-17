@@ -105,13 +105,13 @@ services:
     restart: always
 
 
-  analyzer:
-    image: reportportal/service-analyzer:4.3.0
-    depends_on:
-      - registry
-      - gateway
-      - elasticsearch
-    restart: always
+#  analyzer:
+#    image: reportportal/service-analyzer:4.3.0
+#    depends_on:
+#      - registry
+#      - gateway
+#      - elasticsearch
+#    restart: always
 
 
   elasticsearch:
