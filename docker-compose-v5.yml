@@ -4,7 +4,7 @@ services:
   gateway:
     image: traefik:1.7.12
     ports:
-      - "80:80"
+      - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command:
@@ -12,7 +12,7 @@ services:
       - --docker.watch
       - --docker.constraints=tag==reportportal
       - --defaultEntryPoints=http
-      - --entryPoints=Name:http Address::80
+      - --entryPoints=Name:http Address::8080
       - --logLevel=ERROR
       - --web
       - --web.address=:8081
@@ -59,7 +59,6 @@ services:
       POSTGRES_USER: rpuser
       POSTGRES_PASSWORD: rppass
 
-
   postgres:
     image: postgres:12-alpine
     shm_size: '512m'
@@ -105,7 +104,7 @@ services:
       - RP_BINARYSTORE_MINIO_ENDPOINT=http://minio:9000
       - RP_BINARYSTORE_MINIO_ACCESSKEY=minio
       - RP_BINARYSTORE_MINIO_SECRETKEY=minio123
-      - RP_SESSION_LIVE=86400 #in seconds
+      - RP_SESSION_LIVE=86400
     restart: always
     labels:
       - "traefik.backend=uat"
@@ -126,7 +125,7 @@ services:
       - "traefik.backend=index"
       - "traefik.frontend.rule=PathPrefix:/"
       - "traefik.enable=true"
-      - "traefik.port=80"
+      - "traefik.port=8080"
       - "traefik.tags=reportportal"
 
   api:
@@ -165,7 +164,7 @@ services:
       - "traefik.backend=ui"
       - "traefik.frontend.rule=PathPrefixStrip:/ui/"
       - "traefik.enable=true"
-      - "traefik.port=80"
+      - "traefik.port=8080"
       - "traefik.tags=reportportal"
 
   minio:
