@@ -125,7 +125,7 @@ services:
       - "traefik.backend=index"
       - "traefik.frontend.rule=PathPrefix:/"
       - "traefik.enable=true"
-      - "traefik.port=8080"
+      - "traefik.port=80"
       - "traefik.tags=reportportal"
 
   api:
@@ -164,7 +164,7 @@ services:
       - "traefik.backend=ui"
       - "traefik.frontend.rule=PathPrefixStrip:/ui/"
       - "traefik.enable=true"
-      - "traefik.port=8080"
+      - "traefik.port=80"
       - "traefik.tags=reportportal"
 
   minio:
