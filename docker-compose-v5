@@ -5,7 +5,6 @@ services:
     image: traefik:1.7.12
     ports:
       - "80:80"
-      - "8081:8081"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command:
@@ -13,7 +12,7 @@ services:
       - --docker.watch
       - --docker.constraints=tag==reportportal
       - --defaultEntryPoints=http
-      - --entryPoints=Name:http Address::8080
+      - --entryPoints=Name:http Address::80
       - --logLevel=ERROR
       - --web
       - --web.address=:8081
@@ -127,7 +126,7 @@ services:
       - "traefik.backend=index"
       - "traefik.frontend.rule=PathPrefix:/"
       - "traefik.enable=true"
-      - "traefik.port=8080"
+      - "traefik.port=80"
       - "traefik.tags=reportportal"
 
   api:
@@ -166,7 +165,7 @@ services:
       - "traefik.backend=ui"
       - "traefik.frontend.rule=PathPrefixStrip:/ui/"
       - "traefik.enable=true"
-      - "traefik.port=8080"
+      - "traefik.port=80"
       - "traefik.tags=reportportal"
 
   minio:
