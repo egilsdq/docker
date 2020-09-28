@@ -1,0 +1,34 @@
+  data-migration:
+    image: reportportal/data-migration:latest
+    #volumes:
+    #  - ./data/storage:/data/storage
+    environment:
+      JAVA_OPTS: "-Xmx8g -Djava.security.egd=file:/dev/./urandom"
+      # Postgres params
+      RP_DB_HOST: postgres # Where PostgreSQL is hosted
+      RP_DB_USER: rpuser   # User for reportportal db
+      RP_DB_PASS: rppass   # Password for reportportal db
+      RP_DB_NAME: reportportal # The name of reportportal db
+      RP_DB_PORT: 5432 # PostgresSQL port
+      RP_POOL_COREPOOLSIZE: 8 # Depends on your processor type and amount of cores
+      RP_POOL_MAXPOOLSIZE: 14 # Should be higher than core pool size
+      RP_ITEMS_BATCH: 10000  # Count of processing items for each thread. A bigger number needs more RAM. 
+      RP_DATASOURCE_MAXIMUMPOOLSIZE: 24 # Size of connections to Postgres. Should be higher that core pool size
+
+      # Api container binarystore path
+      # RP_BINARYSTORE_CONTAINER_PATH: /data/storage
+      # RP_BINARYSTORE_PATH: /data/storage
+
+      RP_BINARYSTORE_TYPE: minio
+      RP_BINARYSTORE_MINIO_ENDPOINT: http://minio:9000
+      RP_BINARYSTORE_MINIO_ACCESSKEY: minio
+      RP_BINARYSTORE_MINIO_SECRETKEY: minio123
+
+      # Data older than dates below will not migrate. ISO_LOCAL_DATE (yyyy-MM-dd)
+      RP_LAUNCH_KEEPFROM: '2000-01-01'     # Keep launches from date in ISO_LOCAL_DATE (yyyy-MM-dd)
+      RP_TEST_KEEPFROM: '2000-01-01'       # Keep test from date in ISO_LOCAL_DATE (yyyy-MM-dd). Example: '2000-01-01'
+      RP_LOG_KEEPFROM: '2000-01-01'        # Keep logs from date in ISO_LOCAL_DATE (yyyy-MM-dd). Example: '2000-01-01'
+      RP_ATTACH_KEEPFROM: '2000-01-01'     # Keep attachments from date in ISO_LOCAL_DATE (yyyy-MM-dd). Example: '2000-01-01'
+
+      # Mongo params
+      RP_MONGODB_URI: mongodb://user:password@host:port/database_name
